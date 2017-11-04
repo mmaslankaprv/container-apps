@@ -1,0 +1,32 @@
+influx:
+  restart: always
+  image: influxdb:alpine
+telegraf:
+  restart: always
+  image: telegraf:alpine
+  links:
+    - influx
+  volumes:
+    - ./telegraf/conf:/etc/telegraf
+grafana-1:
+  restart: always
+  image: grafana/grafana
+  links:
+    - influx
+  environment:
+    - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s:/grafana
+    - GF_SERVER_DOMAIN=localhost
+  ports:
+    - 3000:3000
+nginx:
+  restart: always
+  image: nginx:alpine
+  links:
+    - telegraf
+    - grafana-1
+  volumes:
+    - ./nginx:/etc/nginx
+    - /private/etc/stunnel:/etc/stunnel
+  ports:
+    - 10080:10080
+    - 10443:10443
