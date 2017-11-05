@@ -10,7 +10,7 @@ telegraf:
     - ./telegraf/conf:/etc/telegraf
 grafana-1:
   restart: always
-  image: grafana/grafana
+  image: grafana/grafana:latest
   links:
     - influx
   environment:
