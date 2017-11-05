@@ -1,4 +1,15 @@
 [
+  {
+      "description": "Test IoT Stack",
+      "repository": "dockerhub",
+      "arch": "amd64",
+      "icon": "http://download.qnap.com/QPKG/images/QPKG/container/app_gitlab.png",
+      "displayName": "IoT Stack",
+      "name": "mqtt",
+      "version": "1.0.0",
+      "location": "https://hub.docker.com/r/sameersbn/gitlab/",
+      "type": "app"
+  },
     {
         "description": "GitLab is a web-based Git repository manager with code reviews, issue tracking, activity feeds and wikis.",
         "repository": "dockerhub",
